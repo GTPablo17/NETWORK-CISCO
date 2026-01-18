@@ -189,17 +189,14 @@ exit
 interface g0/0.10
 encapsulation dot1q 10
 ip add 192.168.10.1 255.255.255.0
-ip helper-address 192.168.60.100
 exit
 interface g0/0.15
 encapsulation dot1q 15
 ip add 192.168.15.1 255.255.255.0
-ip helper-address 192.168.60.100
 exit
 interface g0/0.20
 encapsulation dot1q 20
 ip add 192.168.20.1 255.255.255.0
-ip helper-address 192.168.60.100
 exit
 ```
 -------------------------------------------------------------------
@@ -364,6 +361,24 @@ PARTE 6   CONFIGURACION RED DE SERVIDOR DHCP
 -------------------------------------------------------------------
 -------------------------------------------------------------------
 
+DHCP SERVER: 192.168.60.100 
+ 
+NOTA: La ip que le pongamos al server sera la que va en el comando
+de ip helper-address x.x.x.x
+
+ROUTER BORDE
+```
+inter g0/0.10
+ip helper-address 192.168.60.100
+exit
+inter g0/0.15
+ip helper-address 192.168.60.100
+exit
+inter g0/0.20
+ip helper-address 192.168.60.100
+exit
+```
+-----------------------------------
 ROUTER BORDE 2
 ```
 enable
@@ -390,7 +405,7 @@ ip add 192.168.60.1 255.255.255.0
 ip helper-address 192.168.60.100
 exit
 ```
-NOTA: Hacer lo mismo en cada interfaz logica del Router BORDE.
+
 
 -----------------------------------
 
